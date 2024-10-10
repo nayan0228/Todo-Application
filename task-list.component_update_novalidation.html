@@ -1,0 +1,27 @@
+<ul>
+  <li *ngFor="let task of tasks$ | async">
+
+    <form (ngSubmit)="updateTask(task)">
+
+      Assigned To: <input type="text" name="title" [(ngModel)]="task.assigned to" [disabled]="!task.isEditable" />
+      <br>
+
+      Status: <input type="text" name="content" [(ngModel)]="task.Status" [disabled]="!task.isEditable" />
+      <br>
+
+      Due Date: <input type="text" name="due_date" [(ngModel)]="task.due_date" [disabled]="!task.isEditable" />
+      <br>
+
+      Priority: <input type="text" name="content" [(ngModel)]="task.Priority" [disabled]="!task.isEditable" />
+      <br>
+
+      Comments: <input type="text" name="content" [(ngModel)]="task.Comments" [disabled]="!task.isEditable" />
+      <br>
+
+      <button *ngIf="!task.isEditable" (click)="task.isEditable=!task.isEditable">Edit</button>
+      <button type="submit" *ngIf="task.isEditable">Save</button>
+      <button type="button" (click)=deleteTask(task.id)>Delete</button>
+    </form>
+
+  </li>
+</ul>
